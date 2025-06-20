@@ -5,9 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -47,7 +48,7 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."studio" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [ configuration mac-app-util.darwinModules.default ];
     };
   };
 }
