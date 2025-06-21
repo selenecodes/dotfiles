@@ -36,10 +36,7 @@
           # Apps
           pkgs.arc-browser
           pkgs.vscode
-          pkgs.iina
-          # Work stuff
-          pkgs.teams
-          pkgs.slack
+          pkgs.iina       
         ];
 
       homebrew = {
@@ -71,6 +68,8 @@
           "discord"
           "signal"
           "whatsapp"
+          "microsoft-teams"
+          "slack"
           # Gaming
           "virtualhereserver"
           "moonlight"
@@ -136,9 +135,6 @@
               #
               # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
               # mutableTaps = false;
-
-              # Automatically migrate existing Homebrew installations
-              autoMigrate = true;
             };
         }
       ];
