@@ -51,6 +51,7 @@
         casks = [
           "logitune"
           "mp3tag"
+          "audiobook-builder"
           "musicbrainz-picard"
           "plex"
           "plexamp"
@@ -66,9 +67,12 @@
           # VPN
           "tailscale"
           "protonvpn"
-          # Gaming
+          # Messaging
           "discord"
-          "virtualhere"
+          "signal"
+          "whatsapp"
+          # Gaming
+          "virtualhereserver"
           "moonlight"
           "nvidia-geforce-now"
           "steam"
@@ -78,13 +82,8 @@
           "Amphetamine" = 937984704;
           "Infuse" = 1136220934;
           "1Password for Safari" = 1569813296;
-          "Audiobook Builder" = 1437681957;
           "Manet" = 6470928235;
-          "WhatsApp" = 310633997;
           "Xcode" = 497799835;
-          "Microsoft Word" = 462054704;
-          "Microsoft Excel" = 462058435;
-          "Microsoft PowerPoint" = 462062816;
           "Prologue" = 1459223267;
         };
         onActivation.cleanup = "zap";
