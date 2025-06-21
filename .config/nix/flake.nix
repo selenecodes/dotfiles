@@ -14,6 +14,66 @@
     configuration = { pkgs, ... }: {
       nixpkgs.config.allowUnfree = true;
 
+      system.defaults = {
+        dock = {
+          autohide = true;
+          tilesize = 60;
+          # Whether to make hidden apps translucent
+          showhidden = true;
+          # Group expose apps by application
+          expose-group-apps = true;
+          # Hot corners (1 is disabled)
+          wvous-bl-corner = 1;
+          wvous-br-corner = 1;
+          wvous-tl-corner = 1;
+          wvous-tr-corner = 1;
+        };
+        finder = {
+          ShowRemovableMediaOnDesktop = false;
+          ShowMountedServersOnDesktop = false;
+          ShowHardDrivesOnDesktop = false;
+          ShowExternalHardDrivesOnDesktop = false;
+          # Search in same folder by default (instead of "this mac")
+          FXDefaultSearchScope = "SCcf";
+          AppleShowAllFiles = true;
+          AppleShowAllExtensions = true;
+        };
+        menuExtraClock = {
+          Show24Hour = true;
+          ShowSeconds = true;
+          ShowDate = 1;
+        };
+        spaces = {
+          # MacOS spaces are configured to span across all displays 
+          spans-displays = true;
+        };
+        trackpad = {
+          # Enable lookup & data detectors on triple tap
+          TrackpadThreeFingerTapGesture = 2;
+          TrackpadThreeFingerDrag = true;
+          # Medium firmness for clicks (0 is light, 1 is medium, 2 is firm)
+          FirstClickThreshold = 1;
+          SecondClickThreshold = 1;
+        };
+        WindowManager = {
+          EnableTiledWindowMargins = false;
+        };
+      };
+
+      networking = {
+        knownNetworkServices = [
+          "Ethernet"
+          "Thunderbolt Bridge"
+          "Wi-Fi"
+        ];
+        dns = [
+          "1.1.1.1"
+          "1.0.0.1"
+          "2606:4700:4700::1111"
+          "2606:4700:4700::1001"
+        ];
+      };
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
@@ -86,6 +146,8 @@
           "Prologue" = 1459223267;
         };
         onActivation.cleanup = "zap";
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
       };
 
       fonts.packages = [
