@@ -4,19 +4,19 @@
     {
       "if" : {
         "device" : {
-          "vendorID" : "0x46d",
           "productID" : "0xc52b",
           "productName" : "USB Receiver",
-          "category" : "mouse"
+          "category" : "mouse",
+          "vendorID" : "0x46d"
         }
       },
       "scrolling" : {
         "distance" : "auto",
-        "speed" : 0,
+        "acceleration" : 1,
         "reverse" : {
           "vertical" : true
         },
-        "acceleration" : 1
+        "speed" : 0
       },
       "buttons" : {
         "universalBackForward" : true
@@ -26,19 +26,19 @@
       "if" : {
         "app" : "com.moonlight-stream.Moonlight",
         "device" : {
-          "vendorID" : "0x46d",
-          "productID" : "0xc52b",
           "productName" : "USB Receiver",
-          "category" : "mouse"
+          "productID" : "0xc52b",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
         }
+      },
+      "pointer" : {
+        "disableAcceleration" : true
       },
       "scrolling" : {
         "reverse" : {
           "vertical" : false
         }
-      },
-      "pointer" : {
-        "disableAcceleration" : true
       }
     }
   ]
