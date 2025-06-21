@@ -44,7 +44,8 @@
           ShowDate = 1;
         };
         spaces = {
-          # MacOS spaces are configured to span across all displays 
+          # MacOS spaces are configured to span across all displays
+          # TODO: this is not working as expected, need to investigate
           spans-displays = true;
         };
         trackpad = {
@@ -143,6 +144,7 @@
           "1Password for Safari" = 1569813296;
           "Manet" = 6470928235;
           "Xcode" = 497799835;
+          # TODO: fix prologue issue
           "Prologue" = 1459223267;
         };
         onActivation.cleanup = "zap";
