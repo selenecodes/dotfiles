@@ -44,9 +44,11 @@
           ShowDate = 1;
         };
         spaces = {
-          # MacOS spaces are configured to span across all displays
-          # TODO: this is not working as expected, need to investigate
-          spans-displays = true;
+          # MacOS spaces are configured on a per-monitor basis
+          # I would prefer to span accross all monitors but this breaks
+          # fullscreen apps (e.g. all screens turn black when entering fullscreen)
+          # except for the main screen
+          spans-displays = false;
         };
         trackpad = {
           # Enable lookup & data detectors on triple tap
