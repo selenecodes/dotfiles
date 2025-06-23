@@ -11,55 +11,64 @@
 
   outputs = inputs@{ self, nix-darwin, nix-homebrew, nixpkgs, mac-app-util }:
   let
-    configuration = { pkgs, ... }: {
+    mkConfiguration = { platform, primaryUser }: { pkgs, ... }: {
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.hostPlatform = platform;
 
-      system.defaults = {
-        dock = {
-          autohide = true;
-          tilesize = 60;
-          # Whether to make hidden apps translucent
-          showhidden = true;
-          # Group expose apps by application
-          expose-group-apps = true;
-          # Hot corners (1 is disabled)
-          wvous-bl-corner = 1;
-          wvous-br-corner = 1;
-          wvous-tl-corner = 1;
-          wvous-tr-corner = 1;
-        };
-        finder = {
-          ShowRemovableMediaOnDesktop = false;
-          ShowMountedServersOnDesktop = false;
-          ShowHardDrivesOnDesktop = false;
-          ShowExternalHardDrivesOnDesktop = false;
-          # Search in same folder by default (instead of "this mac")
-          FXDefaultSearchScope = "SCcf";
-          AppleShowAllFiles = true;
-          AppleShowAllExtensions = true;
-        };
-        menuExtraClock = {
-          Show24Hour = true;
-          ShowSeconds = true;
-          ShowDate = 1;
-        };
-        spaces = {
-          # MacOS spaces are configured on a per-monitor basis
-          # I would prefer to span accross all monitors but this breaks
-          # fullscreen apps (e.g. all screens turn black when entering fullscreen)
-          # except for the main screen
-          spans-displays = false;
-        };
-        trackpad = {
-          # Enable lookup & data detectors on triple tap
-          TrackpadThreeFingerTapGesture = 2;
-          TrackpadThreeFingerDrag = true;
-          # Medium firmness for clicks (0 is light, 1 is medium, 2 is firm)
-          FirstClickThreshold = 1;
-          SecondClickThreshold = 1;
-        };
-        WindowManager = {
-          EnableTiledWindowMargins = false;
+      system = {
+        # Set Git commit hash for darwin-version.
+        configurationRevision = self.rev or self.dirtyRev or null;
+        # Used for backwards compatibility, please read the changelog before changing.
+        # $ darwin-rebuild changelog
+        stateVersion = 6;
+        primaryUser = primaryUser;
+        defaults = {
+          dock = {
+            autohide = true;
+            tilesize = 60;
+            # Whether to make hidden apps translucent
+            showhidden = true;
+            # Group expose apps by application
+            expose-group-apps = true;
+            # Hot corners (1 is disabled)
+            wvous-bl-corner = 1;
+            wvous-br-corner = 1;
+            wvous-tl-corner = 1;
+            wvous-tr-corner = 1;
+          };
+          finder = {
+            ShowRemovableMediaOnDesktop = false;
+            ShowMountedServersOnDesktop = false;
+            ShowHardDrivesOnDesktop = false;
+            ShowExternalHardDrivesOnDesktop = false;
+            # Search in same folder by default (instead of "this mac")
+            FXDefaultSearchScope = "SCcf";
+            AppleShowAllFiles = true;
+            AppleShowAllExtensions = true;
+          };
+          menuExtraClock = {
+            Show24Hour = true;
+            ShowSeconds = true;
+            ShowDate = 1;
+          };
+          spaces = {
+            # MacOS spaces are configured on a per-monitor basis
+            # I would prefer to span accross all monitors but this breaks
+            # fullscreen apps (e.g. all screens turn black when entering fullscreen)
+            # except for the main screen
+            spans-displays = false;
+          };
+          trackpad = {
+            # Enable lookup & data detectors on triple tap
+            TrackpadThreeFingerTapGesture = 2;
+            TrackpadThreeFingerDrag = true;
+            # Medium firmness for clicks (0 is light, 1 is medium, 2 is firm)
+            FirstClickThreshold = 1;
+            SecondClickThreshold = 1;
+          };
+          WindowManager = {
+            EnableTiledWindowMargins = false;
+          };
         };
       };
 
@@ -92,7 +101,6 @@
           # Git
           pkgs.git
           pkgs.git-lfs
-          pkgs.git-credential-manager
           # Node.js
           pkgs.fnm
           pkgs.bun
@@ -108,6 +116,7 @@
           "asimov"
           "mas"
         ];
+        caskArgs.no_quarantine = true;
         casks = [
           "logitune"
           "mp3tag"
@@ -117,6 +126,8 @@
           "plexamp"
           "raycast"
           "affine"
+          "lm-studio"
+          "ollama"
           # Mac fixes
           "cleanshot"
           "ghostty"
@@ -124,6 +135,7 @@
           "monitorcontrol"
           "soundsource"
           "daisydisk"
+          "git-credential-manager"
           # VPN
           "tailscale"
           "protonvpn"
@@ -164,46 +176,45 @@
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
       programs.zsh.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 6;
-
-      system.primaryUser = "seleneblok";
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
     };
   in
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."studio" = nix-darwin.lib.darwinSystem {
-      modules = [
-        configuration
-        mac-app-util.darwinModules.default
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-            nix-homebrew = {
-              # Install Homebrew under the default prefix
-              enable = true;
+    darwinConfigurations = {
+      studio = nix-darwin.lib.darwinSystem {
+        modules = [
+          (mkConfiguration { platform = "aarch64-darwin"; primaryUser = "seleneblok"; })
+          mac-app-util.darwinModules.default
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+              nix-homebrew = {
+                enable = true;
+                # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+                enableRosetta = true;
+                # User owning the Homebrew prefix
+                user = "seleneblok";
+                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+                # mutableTaps = false;
+              };
+          }
+        ];
+      };
 
-              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-              enableRosetta = true;
-
-              # User owning the Homebrew prefix
-              user = "seleneblok";
-
-              # Optional: Enable fully-declarative tap management
-              #
-              # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-              # mutableTaps = false;
-            };
-        }
-      ];
+      work = nix-darwin.lib.darwinSystem {
+        modules = [
+          (mkConfiguration { platform = "x86_64-darwin"; primaryUser = "seleneblok"; })
+          mac-app-util.darwinModules.default
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+              nix-homebrew = {
+                enable = true;
+                user = "seleneblok";
+                mutableTaps = false;
+              };
+          }
+        ];
+      };
     };
   };
 }
