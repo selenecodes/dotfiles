@@ -7,16 +7,18 @@ Clone this repo into your home directory and run `stow .`
 See: [Dreams of Autonomy - Stow has forever changed the way I manage my dotfiles](https://www.youtube.com/watch?v=y6XCebnB9gs)
 
 ## How to run my nix config?
-1. Install nix from https://nixos.org/download/.
-2. Install nix-darwin using:
+1. Clone this repository to your home folder
+2. Install nix from https://nixos.org/download/.
+3. Run the following to add the files of this repo to your home directory
 ```bash
-nix flake init -t nix-darwin --extra-experimental-features "nix-command flakes"
+nix shell --extra-experimental-features "nix-command flakes"
+stow .
 ```
-3. Initialize nix-darwin:
+4. Initialize nix-darwin:
 ```bash
 sudo nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/.config/nix#studio
 ```
-4. Rebuild the nix configuration whenever you wish.
+5. Rebuild the nix configuration whenever you wish.
 ```bash
 sudo darwin-rebuild switch --flake ~/dotfiles/.config/nix#studio
 ```
