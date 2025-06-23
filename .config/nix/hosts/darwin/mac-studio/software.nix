@@ -3,26 +3,7 @@
     ../shared/software.nix
   ];
 
-  environment.systemPackages = lib.mkAfter (with pkgs; [
-    # Terminal
-    neovim
-    tmux
-    fzf
-    stow
-    tree
-    zoxide
-    docker
-    # Git
-    git
-    git-lfs
-    # Node.js
-    fnm
-    bun
-    # Apps
-    arc-browser
-    vscode
-    iina     
-  ]);
+  environment.systemPackages = lib.mkAfter (with pkgs; []);
 
   # `brew list <>` can help pinpoint package name
   # for both ordinary packages and casks
