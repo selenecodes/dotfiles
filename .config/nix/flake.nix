@@ -11,7 +11,7 @@
 
   outputs = inputs@{ self, nix-darwin, nix-homebrew, nixpkgs, mac-app-util }:
   let
-    mkConfiguration = { platform, primaryUser }: { pkgs, ... }: {
+    mkConfiguration = { platform, primaryUser, isPersonalDevice }: { pkgs, ... }: {
       nixpkgs.config.allowUnfree = true;
       nixpkgs.hostPlatform = platform;
 
@@ -21,11 +21,21 @@
         # Used for backwards compatibility, please read the changelog before changing.
         # $ darwin-rebuild changelog
         stateVersion = 6;
+        # security.pam.services.sudo_local.touchIdAuth = true;
         primaryUser = primaryUser;
         defaults = {
           dock = {
             autohide = true;
+            autohide-delay = 0.0;
+            autohide-time-modifier = 0.5;
             tilesize = 60;
+            show-recents = false;
+            # Application hide and show effect
+            mineffect = "genie";
+            launchanim = true;
+            # Hover magnification settings
+            largesize = 84;
+            magnification = true;
             # Whether to make hidden apps translucent
             showhidden = true;
             # Group expose apps by application
@@ -110,19 +120,10 @@
           pkgs.iina       
         ];
 
-      homebrew = {
-        enable = true;
-        brews = [
-          "asimov"
-          "mas"
-        ];
-        caskArgs.no_quarantine = true;
-        casks = [
+      
+      let
+        sharedCasks = [
           "logitune"
-          "mp3tag"
-          "audiobook-builder"
-          "musicbrainz-picard"
-          "plex"
           "plexamp"
           "raycast"
           "affine"
@@ -134,36 +135,58 @@
           "linearmouse"
           "monitorcontrol"
           "soundsource"
-          "daisydisk"
           "git-credential-manager"
           # VPN
           "tailscale"
+          # Messaging
+          "microsoft-teams"
+          "slack"
+        ];
+
+        personalCasks = [
+          # Shared apps
+          "mp3tag"
+          "audiobook-builder"
+          "musicbrainz-picard"
+          "plex"
+          # Mac fixes
+          "daisydisk"
+          # VPN
           "protonvpn"
           # Messaging
           "discord"
           "signal"
           "whatsapp"
-          "microsoft-teams"
-          "slack"
           # Gaming
           "virtualhereserver"
           "moonlight"
           "nvidia-geforce-now"
           "steam"
           "prismlauncher"
-        ];
-        masApps = {
-          "Amphetamine" = 937984704;
-          "Infuse" = 1136220934;
-          "1Password for Safari" = 1569813296;
-          "Manet" = 6470928235;
-          "Xcode" = 497799835;
-          # TODO: fix prologue issue
-          "Prologue" = 1459223267;
+        ]
+      in
+      {
+        homebrew = {
+          enable = true;
+          brews = [
+            "asimov"
+            "mas"
+          ];
+          caskArgs.no_quarantine = true;
+          casks = sharedCasks ++ lib.optionals isPersonalDevice personalCasks;
+          masApps = {
+            "Amphetamine" = 937984704;
+            "Infuse" = 1136220934;
+            "1Password for Safari" = 1569813296;
+            "Manet" = 6470928235;
+            "Xcode" = 497799835;
+            # TODO: fix prologue issue
+            "Prologue" = 1459223267;
+          };
+          onActivation.cleanup = "zap";
+          onActivation.autoUpdate = true;
+          onActivation.upgrade = true;
         };
-        onActivation.cleanup = "zap";
-        onActivation.autoUpdate = true;
-        onActivation.upgrade = true;
       };
 
       fonts.packages = [
@@ -190,12 +213,9 @@
           {
               nix-homebrew = {
                 enable = true;
+                user = "seleneblok";
                 # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
                 enableRosetta = true;
-                # User owning the Homebrew prefix
-                user = "seleneblok";
-                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                # mutableTaps = false;
               };
           }
         ];
@@ -210,7 +230,6 @@
               nix-homebrew = {
                 enable = true;
                 user = "seleneblok";
-                mutableTaps = false;
               };
           }
         ];
