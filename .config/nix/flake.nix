@@ -13,6 +13,7 @@
     darwinConfigurations = {
       studio = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = { inherit self; };
         modules = [
           ./hosts/darwin/mac-studio/default.nix
           mac-app-util.darwinModules.default
@@ -29,6 +30,7 @@
 
       work = nix-darwin.lib.darwinSystem {
         system = "x86_64-darwin";
+        specialArgs = { inherit self; };
         modules = [
           ./hosts/darwin/work-laptop/default.nix
           mac-app-util.darwinModules.default

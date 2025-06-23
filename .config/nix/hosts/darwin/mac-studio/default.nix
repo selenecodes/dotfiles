@@ -5,7 +5,7 @@
     ./software.nix
   ];
   nixpkgs.hostPlatform = "aarch64-darwin";
-  primaryUser = "seleneblok";
+  system.primaryUser = "seleneblok";
   networking.knownNetworkServices = [
     "Ethernet"
     "Thunderbolt Bridge"

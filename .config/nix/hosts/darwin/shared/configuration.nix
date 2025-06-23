@@ -1,10 +1,9 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, self, ... }:
 
 {
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = platform;
 
   system = {
     # Set Git commit hash for darwin-version.
@@ -12,8 +11,6 @@
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 6;
-    # security.pam.services.sudo_local.touchIdAuth = true;
-    primaryUser = primaryUser;
     defaults = {
       dock = {
         autohide = true;
