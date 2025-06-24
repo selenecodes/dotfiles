@@ -12,6 +12,7 @@
   homebrew.casks = lib.mkAfter [
     # Shared apps
     "displaylink"
+    "citrix-workspace"
   ];
 
   # `mas search <>` can help pinpoint package name
