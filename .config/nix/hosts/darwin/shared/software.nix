@@ -47,6 +47,7 @@
       "plexamp"
       "raycast"
       "affine"
+      "obsidian"
       "lm-studio"
       "ollama"
       # Mac fixes
