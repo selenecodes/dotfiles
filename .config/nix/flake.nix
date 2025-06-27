@@ -7,9 +7,13 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-homebrew, mac-app-util, ... }: {
+  outputs = inputs@{ self, nix-darwin, nix-homebrew, home-manager, mac-app-util, ... }: {
     darwinConfigurations = {
       studio = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -18,6 +22,7 @@
           ./hosts/darwin/mac-studio/default.nix
           mac-app-util.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
+          home-manager.darwinModules.home-manager
           {
             nix-homebrew = {
               enable = true;
@@ -35,6 +40,7 @@
           ./hosts/darwin/work-laptop/default.nix
           mac-app-util.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
+          home-manager.darwinModules.home-manager
           {
             nix-homebrew = {
               enable = true;
