@@ -2,8 +2,7 @@
   imports = [
     ../shared/software.nix
   ];
-
-  environment.systemPackages = lib.mkAfter (with pkgs; []);
+  environment.systemPackages = lib.mkAfter (with pkgs; [ ]);
 
   # `brew list <>` can help pinpoint package name
   # for both ordinary packages and casks
@@ -22,12 +21,12 @@
     # VPN
     "protonvpn"
     # Messaging
-    "discord"
+    # discord: Install discord manually for now because Krisp doesn't work
     "signal"
     "whatsapp"
     # Gaming
-    "virtualhereserver"
     "moonlight"
+    "virtualhereserver"
     "nvidia-geforce-now"
     "steam"
     "prismlauncher"

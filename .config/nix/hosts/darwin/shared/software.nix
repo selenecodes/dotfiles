@@ -18,10 +18,6 @@
     # Node.js
     fnm
     bun
-    # Apps
-    arc-browser
-    vscode
-    iina     
   ];
 
   homebrew = {
@@ -43,13 +39,16 @@
     ];
 
     casks = [
+      "arc"
+      "visual-studio-code"
+      "iina"
       "logitune"
       "plexamp"
       "raycast"
       "affine"
       "obsidian"
       "lm-studio"
-      "ollama"
+      "ollama-app"
       # Mac fixes
       "cleanshot"
       "ghostty"
@@ -57,8 +56,6 @@
       "monitorcontrol"
       "soundsource"
       "git-credential-manager"
-      # VPN
-      "tailscale"
       # Messaging
       "microsoft-teams"
       "slack"
@@ -68,6 +65,7 @@
     masApps = {
       "Amphetamine" = 937984704;
       "1Password for Safari" = 1569813296;
+      "Tailscale" = 1475387142;
     };
   };
 }
