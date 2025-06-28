@@ -1,3 +1,0 @@
-# Only allow Library/Application Support/Code/User/settings.json
-Library/*
-!Library/Application Support/Code/User/settings.json
