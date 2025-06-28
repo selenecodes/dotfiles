@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     home-manager = {
@@ -23,13 +25,6 @@
           mac-app-util.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
-          {
-            nix-homebrew = {
-              enable = true;
-              user = "seleneblok";
-              enableRosetta = true;
-            };
-          }
         ];
       };
 
@@ -41,12 +36,6 @@
           mac-app-util.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
-          {
-            nix-homebrew = {
-              enable = true;
-              user = "seleneblok";
-            };
-          }
         ];
       };
     };

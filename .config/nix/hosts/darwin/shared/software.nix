@@ -10,14 +10,11 @@
     fzf
     stow
     tree
-    zoxide
     docker
     # Git
-    git
     git-lfs
     # Node.js
     fnm
-    bun
   ];
 
   homebrew = {
@@ -40,7 +37,6 @@
 
     casks = [
       "arc"
-      "visual-studio-code"
       "iina"
       "logitune"
       "plexamp"
