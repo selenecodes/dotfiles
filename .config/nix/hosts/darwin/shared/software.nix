@@ -1,3 +1,7 @@
+# Applications that should be installed on all devices. Please note that
+# applications which are configured through home-manager go in the
+# ./home/{appname}.nix folder and will be installed from there. DO NOT DUPLICATE
+# THESE APPS HERE!
 { pkgs, ... }: {
   fonts.packages = [
     pkgs.nerd-fonts.jetbrains-mono
@@ -15,6 +19,7 @@
     git-lfs
     # Node.js
     fnm
+    vscode
   ];
 
   homebrew = {
@@ -47,6 +52,7 @@
       "ollama-app"
       # Mac fixes
       "cleanshot"
+      # Remove ghostty and enable ./home/ghostty once the pkg is no longer broken
       "ghostty"
       "linearmouse"
       "monitorcontrol"

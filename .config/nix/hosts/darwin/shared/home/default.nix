@@ -1,10 +1,16 @@
 { pkgs, lib, ... }: {
   imports = [
-    ./bun.nix
-    # ./ghostty.nix
-    ./git.nix
-    ./git-cliff.nix
-    ./vscode.nix
-    ./zoxide.nix
+    ./software/bun.nix
+    # ./software/ghostty.nix
+    ./software/git.nix
+    ./software/git-cliff.nix
+    ./software/vscode.nix
+    ./software/zoxide.nix
   ];
+
+  home = {
+    file.".config/linearmouse/linearmouse.json".source = "${./files/linearmouse.json}"; 
+    file.".p10k.zsh".source = "${./files/.p10k.zsh}";
+    file.".zshrc".source = "${./files/.zshrc}";
+  };
 }
