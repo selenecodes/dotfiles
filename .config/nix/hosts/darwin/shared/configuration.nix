@@ -12,6 +12,10 @@
     # $ darwin-rebuild changelog
     stateVersion = 6;
     defaults = {
+      controlcenter = {
+        Sound = false;
+        NowPlaying = false;
+      };
       dock = {
         autohide = true;
         autohide-delay = 0.0;
@@ -41,8 +45,15 @@
         ShowExternalHardDrivesOnDesktop = false;
         # Search in same folder by default (instead of "this mac")
         FXDefaultSearchScope = "SCcf";
+        _FXSortFoldersFirst = true;
+        _FXSortFoldersFirstOnDesktop = true;
         AppleShowAllFiles = true;
         AppleShowAllExtensions = true;
+        ShowStatusBar = true;
+      };
+      iCal = {
+        "TimeZone support enabled" = true;
+        CalendarSidebarShown = true;
       };
       menuExtraClock = {
         Show24Hour = true;
@@ -63,6 +74,22 @@
         # Medium firmness for clicks (0 is light, 1 is medium, 2 is firm)
         FirstClickThreshold = 1;
         SecondClickThreshold = 1;
+      };
+      universalaccess = {
+        closeViewScrollWheelToggle = true;
+      };
+      loginwindow = {
+        GuestEnabled = false;
+        PowerOffDisabledWhileLoggedIn = false;
+        RestartDisabledWhileLoggedIn = false;
+        RestartDisabled = false;
+        ShutDownDisabledWhileLoggedIn = false;
+        ShutDownDisabled = false;
+        SleepDisabled = false;
+      };
+      ActivityMonitor = {
+        IconType = 5;
+        ShowCategory = 101;
       };
       WindowManager = {
         EnableTiledWindowMargins = false;
