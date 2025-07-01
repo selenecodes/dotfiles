@@ -11,6 +11,7 @@
   ];
 
   homebrew.casks = lib.mkAfter [
+    "lm-studio"
     # Shared apps
     "mp3tag"
     "audiobook-builder"

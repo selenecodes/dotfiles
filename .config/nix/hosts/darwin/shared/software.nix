@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     # Terminal
+    zoxide
     neovim
     tmux
     fzf
@@ -48,7 +49,6 @@
       "raycast"
       "affine"
       "obsidian"
-      "lm-studio"
       "ollama-app"
       # Mac fixes
       "cleanshot"
