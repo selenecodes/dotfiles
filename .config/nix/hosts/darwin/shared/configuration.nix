@@ -75,9 +75,6 @@
         FirstClickThreshold = 1;
         SecondClickThreshold = 1;
       };
-      universalaccess = {
-        closeViewScrollWheelToggle = true;
-      };
       loginwindow = {
         GuestEnabled = false;
         PowerOffDisabledWhileLoggedIn = false;

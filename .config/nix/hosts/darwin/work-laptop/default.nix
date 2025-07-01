@@ -13,7 +13,6 @@ in {
   nix-homebrew = {
     enable = true;
     user = username;
-    enableRosetta = true;
   };
   home-manager.users.${username} = import ./home.nix;
   home-manager.useGlobalPkgs = true;
