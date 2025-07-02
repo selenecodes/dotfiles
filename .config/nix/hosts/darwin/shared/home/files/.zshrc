@@ -90,6 +90,7 @@ alias kubectl="minikube kubectl --"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(fnm env)"
 
 # Application configurations
 # >>> conda initialize >>>
