@@ -6,11 +6,9 @@
       extensions = with pkgs.vscode-extensions; [
         # General
         gruntfuggly.todo-tree
-        # ms-vscode.atom-keybindings
         naumovs.color-highlight
         # Themes
         # ayakosky.fluffy-theme
-        # akamud.vscode-theme-onedark
         # mgwg.light-pink-theme
         # TOML
         tamasfe.even-better-toml
@@ -27,7 +25,6 @@
         # arktypeio.arkdark
         unifiedjs.vscode-mdx
         yoavbls.pretty-ts-errors
-        # pflannery.vscode-versionlens
         # DBs
         prisma.prisma
         # Python
@@ -58,7 +55,7 @@
         visualstudioexptteam.vscodeintellicode
         visualstudioexptteam.intellicode-api-usage-examples
         ms-vsliveshare.vsliveshare
-        vscodevim.vim
+        # vscodevim.vim
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-theme-onedark";
@@ -71,6 +68,12 @@
           publisher = "ms-vscode";
           version = "3.3.0";
           sha256 = "sha256-vzOb/DUV44JMzcuQJgtDB6fOpTKzq298WSSxVKlYE4o=";
+        }
+        {
+          name = "vscode-versionlens";
+          publisher = "pflannery";
+          version = "1.22.2";
+          sha256 = "sha256-gsMBB4veu4MWPEkW1sefHi5ZI6zDPNHicMdu0Z3c24Q=";
         }
       ];
       userSettings = {
