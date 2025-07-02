@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: {
   imports = [
     ./software/bun.nix
-    # ./software/ghostty.nix
+    ./software/ghostty.nix
     ./software/git.nix
     ./software/git-cliff.nix
     ./software/vscode.nix
