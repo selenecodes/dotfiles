@@ -11,7 +11,6 @@
     # Terminal
     zoxide
     neovim
-    tmux
     fzf
     stow
     tree

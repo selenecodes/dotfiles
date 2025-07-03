@@ -12,7 +12,6 @@
     file.".config/linearmouse/linearmouse.json".source = "${./files/linearmouse.json}"; 
     file.".p10k.zsh".source = "${./files/.p10k.zsh}";
     file.".zshrc".source = "${./files/.zshrc}";
-    file.".tmux.conf".source = "${./files/.tmux.conf}";
   };
 
   editorconfig = {
