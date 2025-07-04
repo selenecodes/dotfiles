@@ -6,6 +6,7 @@
     ./software/git-cliff.nix
     ./software/vscode.nix
     ./software/zoxide.nix
+    ./software/aerospace.nix
   ];
 
   home = {

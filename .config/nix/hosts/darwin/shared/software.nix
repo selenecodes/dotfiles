@@ -15,7 +15,9 @@
     stow
     tree
     docker
+    aerospace
     # Git
+    git
     git-lfs
     # Node.js
     fnm

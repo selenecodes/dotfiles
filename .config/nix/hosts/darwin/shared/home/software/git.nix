@@ -1,12 +1,12 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "Selene Blok";
     userEmail = "selene.blok@gmail.com";
-    # signing = {
-    #   format = "ssh";
-    #   signByDefault = true;
-    #   signer = 
-    # };
+    extraConfig = {
+      push.autosetupremote = true;
+      init.defaultbranch="main";
+    };
   };
 }
