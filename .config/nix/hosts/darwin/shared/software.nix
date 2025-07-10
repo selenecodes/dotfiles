@@ -22,6 +22,7 @@
     # Node.js
     fnm
     vscode
+    dive
   ];
 
   homebrew = {
