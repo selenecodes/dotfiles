@@ -23,6 +23,7 @@
     fnm
     vscode
     dive
+    claude-code
   ];
 
   homebrew = {

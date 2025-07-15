@@ -75,6 +75,12 @@
           version = "1.22.2";
           sha256 = "sha256-gsMBB4veu4MWPEkW1sefHi5ZI6zDPNHicMdu0Z3c24Q=";
         }
+        {
+          name = "claude-code";
+          publisher = "anthropic";
+          version = "1.0.51";
+          sha256 = "sha256-d66NhGxk7yjmzt9Lr+mFpia6W7FAnarurMeCl/YOGZQ=";
+        }
       ];
       userSettings = {
         "autoDocstring.docstringFormat" = "numpy-notypes";
