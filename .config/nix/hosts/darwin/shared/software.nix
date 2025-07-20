@@ -23,7 +23,6 @@
     fnm
     vscode
     dive
-    claude-code
   ];
 
   homebrew = {
@@ -43,6 +42,8 @@
     brews = [
       "mas"
     ];
+
+    taps = [];
 
     casks = [
       "arc"

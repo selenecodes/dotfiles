@@ -2,12 +2,19 @@
   imports = [
     ../shared/software.nix
   ];
-  environment.systemPackages = lib.mkAfter (with pkgs; [ ]);
+  environment.systemPackages = lib.mkAfter (with pkgs; [
+    claude-code
+  ]);
 
   # `brew list <>` can help pinpoint package name
   # for both ordinary packages and casks
   homebrew.brews = lib.mkAfter [
     "asimov"
+    "opencode"
+  ];
+
+  homebrew.taps = lib.mkAfter [
+    "sst/tap"
   ];
 
   homebrew.casks = lib.mkAfter [
@@ -31,6 +38,7 @@
     "nvidia-geforce-now"
     "steam"
     "prismlauncher"
+    "claude"
   ];
 
   # `mas search <>` can help pinpoint package name
