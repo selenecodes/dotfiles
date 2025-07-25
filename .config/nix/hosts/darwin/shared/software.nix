@@ -54,6 +54,8 @@
       "affine"
       "obsidian"
       "ollama-app"
+      "claude"
+      "claude-code"
       # Mac fixes
       "cleanshot"
       # Remove ghostty and enable ./home/ghostty once the pkg is no longer broken

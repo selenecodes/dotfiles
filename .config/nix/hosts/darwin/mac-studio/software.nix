@@ -2,9 +2,7 @@
   imports = [
     ../shared/software.nix
   ];
-  environment.systemPackages = lib.mkAfter (with pkgs; [
-    claude-code
-  ]);
+  environment.systemPackages = lib.mkAfter (with pkgs; []);
 
   # `brew list <>` can help pinpoint package name
   # for both ordinary packages and casks
@@ -38,7 +36,6 @@
     "nvidia-geforce-now"
     "steam"
     "prismlauncher"
-    "claude"
   ];
 
   # `mas search <>` can help pinpoint package name
