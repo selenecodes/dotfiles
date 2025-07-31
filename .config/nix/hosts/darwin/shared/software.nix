@@ -41,6 +41,7 @@
     # for both ordinary packages and casks
     brews = [
       "mas"
+      "helm"
     ];
 
     taps = [];
