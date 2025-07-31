@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   programs.aerospace = {
-    enable = true;
+    enable = false;
     userSettings = {
-      start-at-login = true;
+      start-at-login = false;
     };
   };
 }
