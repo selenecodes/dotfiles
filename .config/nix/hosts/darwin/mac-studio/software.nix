@@ -8,11 +8,11 @@
   # for both ordinary packages and casks
   homebrew.brews = lib.mkAfter [
     "asimov"
-    "opencode"
+    # "opencode"
   ];
 
   homebrew.taps = lib.mkAfter [
-    "sst/tap"
+    # "sst/tap"
   ];
 
   homebrew.casks = lib.mkAfter [
