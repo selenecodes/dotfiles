@@ -16,6 +16,7 @@
     tree
     docker
     aerospace
+    azure-cli
     # Git
     git
     git-lfs
