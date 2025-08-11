@@ -17,6 +17,7 @@
     docker
     aerospace
     azure-cli
+    terraform
     # Git
     git
     git-lfs
