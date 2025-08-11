@@ -4,6 +4,7 @@
     lfs.enable = true;
     userName = "Selene Blok";
     userEmail = "selene.blok@gmail.com";
+    ignores = [ "CLAUDE.local.md" ".claude" ];
     extraConfig = {
       push.autosetupremote = true;
       init.defaultbranch="main";
