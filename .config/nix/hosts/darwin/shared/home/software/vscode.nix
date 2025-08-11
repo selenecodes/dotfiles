@@ -109,6 +109,7 @@
         "yaml-compose-sorter.removeVersionKey" = true;
         "files.associations" = {
           "*.hcl" = "hcl";
+          "*.tf" = "hcl";
         };
       };
     };
