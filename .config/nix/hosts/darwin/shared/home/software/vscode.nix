@@ -102,6 +102,9 @@
         "workbench.colorTheme" = "Atom One Dark";
         "workbench.list.typeNavigationMode" = "trigger";
         "yaml-compose-sorter.removeVersionKey" = true;
+        "files.associations" = {
+          "*.hcl" = "terraform";
+        };
       };
     };
   };
