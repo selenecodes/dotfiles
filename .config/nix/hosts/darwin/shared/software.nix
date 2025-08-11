@@ -43,6 +43,7 @@
     brews = [
       "mas"
       "helm"
+      "terragrunt"
     ];
 
     taps = [];

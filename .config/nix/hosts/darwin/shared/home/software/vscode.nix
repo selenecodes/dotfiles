@@ -13,7 +13,6 @@
         # TOML
         tamasfe.even-better-toml
         # Docker & Containers
-        hashicorp.terraform
         ms-vscode-remote.remote-containers
         # ms-azuretools.vscode-containers
         ms-azuretools.vscode-docker
@@ -76,6 +75,12 @@
           sha256 = "sha256-gsMBB4veu4MWPEkW1sefHi5ZI6zDPNHicMdu0Z3c24Q=";
         }
         {
+          name = "hcl";
+          publisher = "hashicorp";
+          version = "0.6.0";
+          sha256 = "sha256-Za2ODrsHR/y0X/FOhVEtbg6bNs439G6rlBHW84EZS60=";
+        }
+        {
           name = "claude-code";
           publisher = "anthropic";
           version = "1.0.51";
@@ -103,7 +108,7 @@
         "workbench.list.typeNavigationMode" = "trigger";
         "yaml-compose-sorter.removeVersionKey" = true;
         "files.associations" = {
-          "*.hcl" = "terraform";
+          "*.hcl" = "hcl";
         };
       };
     };
