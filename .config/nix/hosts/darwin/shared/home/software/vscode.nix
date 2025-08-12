@@ -110,6 +110,7 @@
         "files.associations" = {
           "*.hcl" = "hcl";
           "*.tf" = "hcl";
+          "*.tfvars" = "hcl";
         };
       };
     };
