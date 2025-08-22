@@ -112,6 +112,7 @@
           "*.tf" = "hcl";
           "*.tfvars" = "hcl";
         };
+        "extensions.ignoreRecommendations" = true;
       };
     };
   };
