@@ -94,6 +94,12 @@
         "editor.rulers" = [80];
         "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
+        "extensions.ignoreRecommendations" = true;
+        "files.associations" = {
+          "*.hcl" = "hcl";
+          "*.tf" = "hcl";
+          "*.tfvars" = "hcl";
+        };
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
@@ -108,12 +114,6 @@
         "workbench.colorTheme" = "Atom One Dark";
         "workbench.list.typeNavigationMode" = "trigger";
         "yaml-compose-sorter.removeVersionKey" = true;
-        "files.associations" = {
-          "*.hcl" = "hcl";
-          "*.tf" = "hcl";
-          "*.tfvars" = "hcl";
-        };
-        "extensions.ignoreRecommendations" = true;
       };
     };
   };
