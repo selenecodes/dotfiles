@@ -97,6 +97,7 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
+        "git.replaceTagsWhenPull" = true;
         "javascript.updateImportsOnFileMove.enabled" = "always";
         "python.createEnvironment.trigger" = "off";
         "python.terminal.activateEnvInCurrentTerminal" = false;
