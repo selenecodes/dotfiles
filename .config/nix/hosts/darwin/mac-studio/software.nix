@@ -16,12 +16,10 @@
   ];
 
   homebrew.casks = lib.mkAfter [
-    "lm-studio"
+    # "lm-studio"
     # Shared apps
-    "mp3tag"
-    "audiobook-builder"
-    "musicbrainz-picard"
-    "plex"
+    # "mp3tag"
+    # "audiobook-builder"
     # Mac fixes
     "daisydisk"
     # VPN
@@ -34,8 +32,8 @@
     "moonlight"
     "virtualhereserver"
     "nvidia-geforce-now"
-    "steam"
-    "prismlauncher"
+    # "steam"
+    # "prismlauncher"
   ];
 
   # `mas search <>` can help pinpoint package name

@@ -12,10 +12,9 @@
     zoxide
     neovim
     fzf
-    stow
     tree
     docker
-    aerospace
+    # aerospace
     terraform
     # Git
     git
@@ -23,7 +22,6 @@
     # Node.js
     fnm
     vscode
-    dive
   ];
 
   homebrew = {
@@ -52,13 +50,10 @@
     greedyCasks = true;
     casks = [
       "arc"
-      "iina"
-      "logitune"
       "plexamp"
       "raycast"
-      "affine"
       "obsidian"
-      "ollama-app"
+      # "ollama-app"
       "claude"
       "claude-code"
       # Mac fixes
