@@ -49,6 +49,7 @@
 
     taps = [];
 
+    greedyCasks = true;
     casks = [
       "arc"
       "iina"
