@@ -16,7 +16,6 @@
     tree
     docker
     aerospace
-    azure-cli
     terraform
     # Git
     git
@@ -45,6 +44,7 @@
       "mas"
       "helm"
       "terragrunt"
+      "azure-cli"
     ];
 
     taps = [];
